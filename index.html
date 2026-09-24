@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoSculp Sanctuary — Wildlife Hospital & Emergency Animal Rescue</title>
+  <meta name="description" content="Dedicated to healing, rehabilitating, and protecting injured wildlife, stray companion animals, and endangered fauna. We heal animals with compassion and science.">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #059669;
+      --primary-dark: #065f46;
+      --accent: #10b981;
+      --bg: #f0fdf4;
+      --card-bg: #ffffff;
+      --text: #064e3b;
+    }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #fafdfa; color: #1e293b; margin: 0; }
+    h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; }
+    .navbar { background: #064e3b; color: #fff; padding: 18px 40px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.12); }
+    .logo-brand { font-size: 22px; font-weight: 800; color: #6ee7b7; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+    .nav-links { display: flex; list-style: none; gap: 24px; margin: 0; padding: 0; }
+    .nav-links a { color: #d1fae5; text-decoration: none; font-size: 14px; font-weight: 600; transition: color 0.2s; }
+    .nav-links a:hover { color: #6ee7b7; }
+    .hero-sec { background: linear-gradient(rgba(6,78,59,0.85), rgba(6,78,59,0.92)), url('https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=1600&auto=format&fit=crop'); background-size: cover; color: #fff; text-align: center; padding: 100px 20px 80px; }
+    .btn-emerald { background: #10b981; color: #064e3b; padding: 14px 28px; border-radius: 10px; font-weight: 800; text-decoration: none; display: inline-block; border: none; cursor: pointer; transition: all 0.2s; }
+    .btn-emerald:hover { background: #6ee7b7; transform: translateY(-2px); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+    .case-card { background: #fff; border-radius: 18px; border: 1px solid #d1fae5; overflow: hidden; box-shadow: 0 10px 30px rgba(6,78,59,0.06); transition: transform 0.2s; }
+    .case-card:hover { transform: translateY(-5px); border-color: #10b981; }
+    .case-card img { width: 100%; height: 220px; object-fit: cover; }
+    .status-badge { display: inline-block; padding: 4px 12px; border-radius: 50px; font-size: 11px; font-weight: 800; text-transform: uppercase; }
+    .status-recovering { background: #fef3c7; color: #b45309; }
+    .status-ready { background: #d1fae5; color: #065f46; }
+    .status-released { background: #e0e7ff; color: #3730a3; }
+    .emergency-hotline { position: fixed; bottom: 30px; right: 30px; background: #dc2626; color: #fff; padding: 14px 24px; border-radius: 50px; font-weight: 800; box-shadow: 0 10px 30px rgba(220,38,38,0.4); z-index: 9999; cursor: pointer; display: flex; align-items: center; gap: 10px; border: none; }
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(6,78,59,0.85); backdrop-filter: blur(8px); z-index: 10000; overflow-y: auto; padding: 20px; }
+  </style>
+</head>
+<body>
+
+  <!-- Emergency Dispatch Floating Button -->
+  <button class="emergency-hotline" onclick="openEmergencyModal()">
+    <i class="fas fa-ambulance"></i> 24/7 ANIMAL RESCUE HOTLINE
+  </button>
+
+  <header class="navbar">
+    <a href="#" class="logo-brand">
+      <i class="fas fa-heart-pulse"></i> EcoSculp Sanctuary & Hospital
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about" onclick="openAboutModal()">Our Mission</a></li>
+      <li><a href="#hospital" onclick="openHospitalModal()">Veterinary Hospital</a></li>
+      <li><a href="#cases">Live Patient Dossiers</a></li>
+      <li><a href="#sponsor" onclick="openSponsorModal()">Sponsor Medical Care</a></li>
+      <li><a href="#volunteer" onclick="openVolunteerModal()">Volunteer & Foster</a></li>
+    </ul>
+    <button class="btn-emerald" style="padding: 9px 20px; font-size: 13px;" onclick="openEmergencyModal()">Report Injured Animal 🚨</button>
+  </header>
+
+  <section class="hero-sec">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <span style="background: rgba(110,231,183,0.2); color: #6ee7b7; padding: 6px 16px; border-radius: 50px; font-size: 12px; font-weight: bold; text-transform: uppercase; border: 1px solid rgba(110,231,183,0.4); display: inline-block; margin-bottom: 20px;">
+        Non-Profit Wildlife Hospital & Trauma Center
+      </span>
+      <h1 style="font-size: 52px; margin: 0 0 20px; line-height: 1.2;">We Heal, Rehabilitate &<br><span style="color: #6ee7b7;">Protect Innocent Lives</span></h1>
+      <p style="font-size: 19px; color: #e2e8f0; line-height: 1.6; margin-bottom: 35px;">
+        EcoSculp operates a state-of-the-art trauma surgery hospital, avian aviary, and hydrotherapy rehabilitation sanctuary for injured wildlife and abandoned animals. We never sell animals—we heal them.
+      </p>
+      <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+        <button class="btn-emerald" onclick="openEmergencyModal()"><i class="fas fa-truck-medical me-2"></i> Report Animal in Distress</button>
+        <button onclick="openSponsorModal()" style="background: transparent; color: #fff; border: 2px solid #6ee7b7; padding: 14px 28px; border-radius: 10px; font-weight: bold; cursor: pointer;">Sponsor Surgery & Food</button>
+      </div>
+    </div>
+  </section>
+
+  <main class="container" id="cases">
+    <div style="text-align: center; margin-bottom: 50px;">
+      <span style="color: #059669; font-weight: bold; text-transform: uppercase; font-size: 13px;">Live Clinical Updates</span>
+      <h2 style="font-size: 36px; margin: 8px 0; color: #064e3b;">Patients Under Active Rehabilitation</h2>
+      <p style="color: #64748b; font-size: 16px;">Real-time recovery tracking from our ICU wards, physical therapy wings, and flight conditioning aviaries.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px;">
+      <div class="case-card">
+        <img src="https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=600&auto=format&fit=crop" alt="Barn Owl Recovery">
+        <div style="padding: 25px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <span class="status-badge status-recovering">In Hydrotherapy & ICU</span>
+            <span style="font-size: 12px; color: #64748b; font-weight: bold;">Case #WL-841</span>
+          </div>
+          <h3 style="margin: 0 0 8px; color: #064e3b;">"Barnaby" — Barn Owl Wing Fracture</h3>
+          <p style="color: #475569; font-size: 14px; line-height: 1.6;">Rescued after high-voltage collision. Dr. Harper performed pin stabilization surgery. Currently undergoing flight muscle rehabilitation in the circular aviary.</p>
+          <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 13px; font-weight: bold; color: #059669;">Recovery: 85% Complete</span>
+            <button onclick="sponsorPatient('Barnaby the Barn Owl')" class="btn-emerald" style="padding: 6px 14px; font-size: 12px;">Sponsor Care 💚</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=600&auto=format&fit=crop" alt="Golden Retriever Trauma">
+        <div style="padding: 25px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <span class="status-badge status-ready">Ready For Ethical Foster</span>
+            <span style="font-size: 12px; color: #64748b; font-weight: bold;">Case #CA-209</span>
+          </div>
+          <h3 style="margin: 0 0 8px; color: #064e3b;">"Maya" — Trauma & Malnutrition Recovery</h3>
+          <p style="color: #475569; font-size: 14px; line-height: 1.6;">Rescued from industrial abandonment with severe skin infection and fractured paw. Fully healed, vaccinated, spayed, and ready for a loving, vetted forever home.</p>
+          <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 13px; font-weight: bold; color: #059669;">Fully Vaccinated & Spayed</span>
+            <button onclick="applyFoster('Maya')" class="btn-emerald" style="padding: 6px 14px; font-size: 12px;">Foster Inquiry 🏡</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&auto=format&fit=crop" alt="Kitten Eye Surgery">
+        <div style="padding: 25px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <span class="status-badge status-released">Released to Safe Sanctuary</span>
+            <span style="font-size: 12px; color: #64748b; font-weight: bold;">Case #FE-114</span>
+          </div>
+          <h3 style="margin: 0 0 8px; color: #064e3b;">"Oliver" — Corneal Repair & Care</h3>
+          <p style="color: #475569; font-size: 14px; line-height: 1.6;">Rescued from drainage canal with severe respiratory illness and ocular trauma. Successfully treated with micro-surgical graft and organic antibiotic regimen.</p>
+          <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 13px; font-weight: bold; color: #059669;">100% Healed</span>
+            <button onclick="sponsorPatient('Oliver')" class="btn-emerald" style="padding: 6px 14px; font-size: 12px;">Sponsor Care 💚</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Interactive Modal Engine -->
+  <div id="sanctuaryModal" class="modal-overlay">
+    <div style="max-width: 650px; margin: 40px auto; background: #fff; border-radius: 20px; padding: 35px; position: relative; box-shadow: 0 25px 60px rgba(0,0,0,0.3);">
+      <button onclick="closeModal()" style="position: absolute; top: 20px; right: 20px; background: #f1f5f9; border: none; width: 36px; height: 36px; border-radius: 50%; font-weight: bold; cursor: pointer;">✕</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <footer style="background: #064e3b; color: #d1fae5; padding: 60px 20px 40px; text-align: center; font-size: 14px;">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <h3 style="color: #6ee7b7; font-size: 24px; margin-bottom: 10px;"><i class="fas fa-heart"></i> EcoSculp Sanctuary & Wildlife Rescue</h3>
+      <p>501(c)(3) Licensed Animal Welfare & Wildlife Rehabilitation Foundation · 24/7 Dispatch Center</p>
+      <p style="margin-top: 20px; font-size: 12px; color: #a7f3d0;">© 2026 EcoSculp Sanctuary. We heal and protect every living creature.</p>
+    </div>
+  </footer>
+
+  <script>
+    function openEmergencyModal() {
+      showModal(`
+        <h2 style="color:#dc2626; margin-top:0;"><i class="fas fa-ambulance"></i> Emergency Animal Rescue Dispatch</h2>
+        <p style="color:#475569; font-size:14px;">Our mobile rescue ambulances are equipped with oxygen units, warmers, and trauma immobilization kits.</p>
+        <form onsubmit="event.preventDefault(); alert('🚨 RESCUE DISPATCHED! Our wildlife ambulance unit has received your report with highest priority.'); closeModal();">
+          <label style="font-weight:bold; font-size:13px; display:block; margin-bottom:4px;">Animal Type / Species</label>
+          <input type="text" required placeholder="e.g., Injured Hawk, Stray Dog with Broken Leg, Deer..." style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:8px; margin-bottom:12px; box-sizing:border-box;">
+          
+          <label style="font-weight:bold; font-size:13px; display:block; margin-bottom:4px;">Exact Location / GPS Landmark</label>
+          <input type="text" required placeholder="Street address, trail marker, or intersection..." style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:8px; margin-bottom:12px; box-sizing:border-box;">
+
+          <label style="font-weight:bold; font-size:13px; display:block; margin-bottom:4px;">Your Contact Phone</label>
+          <input type="tel" required placeholder="+1 (555) 000-0000" style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:8px; margin-bottom:15px; box-sizing:border-box;">
+
+          <button type="submit" style="width:100%; padding:14px; background:#dc2626; color:#fff; border:none; border-radius:10px; font-weight:bold; font-size:16px; cursor:pointer;">Dispatch Emergency Rescue Team 🚨</button>
+        </form>
+      `);
+    }
+
+    function openHospitalModal() {
+      showModal(`
+        <h2 style="color:#064e3b; margin-top:0;">Veterinary Surgical & Recovery Facilities</h2>
+        <div style="line-height:1.7; color:#475569;">
+          <p><strong>🏥 Advanced Orthopedic Operating Theater:</strong> Precision micro-fracture repair and titanium pinning for birds and small mammals.</p>
+          <p><strong>🌊 Hydrotherapy & Physical Rehab:</strong> Low-impact underwater treadmill helping paralyzed animals regain mobility.</p>
+          <p><strong>🦅 Aviary Flight Conditioning:</strong> 80-foot circular netting chambers to test endurance before wild release.</p>
+        </div>
+      `);
+    }
+
+    function openAboutModal() {
+      showModal(`
+        <h2 style="color:#064e3b; margin-top:0;">Our Ethical Healing Creed</h2>
+        <p style="color:#475569; line-height:1.8;">EcoSculp was established in 2021 by wildlife veterinary surgeons who refused to accept euthanasia for treatable injuries. We believe every wild creature and companion animal has an inherent right to dignity, medical care, and safe natural habitats.</p>
+      `);
+    }
+
+    function openSponsorModal() {
+      showModal(`
+        <h2 style="color:#059669; margin-top:0;">Sponsor Animal Surgeries & Recovery</h2>
+        <p style="color:#475569; font-size:14px;">100% of donations fund emergency medications, specialized wildlife formulas, and surgical supplies.</p>
+        <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; margin-bottom:15px;">
+          <button onclick="alert('Thank you! $25 Bandages & IV sponsorship confirmed.'); closeModal();" class="btn-emerald" style="padding:10px; font-size:13px;">$25 (Meds)</button>
+          <button onclick="alert('Thank you! $75 Surgery Tray sponsorship confirmed.'); class="btn-emerald" style="padding:10px; font-size:13px;">$75 (Surgery)</button>
+          <button onclick="alert('Thank you! $150 ICU Care sponsorship confirmed.'); class="btn-emerald" style="padding:10px; font-size:13px;">$150 (ICU Week)</button>
+        </div>
+      `);
+    }
+
+    function openVolunteerModal() {
+      showModal(`
+        <h2 style="color:#064e3b; margin-top:0;">Volunteer & Foster Network</h2>
+        <p style="color:#475569; font-size:14px;">Join our team of certified wildlife transporters, animal caregivers, and foster parents.</p>
+        <input type="text" placeholder="Your Name" style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:8px; margin-bottom:10px; box-sizing:border-box;">
+        <input type="email" placeholder="Your Email" style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:8px; margin-bottom:12px; box-sizing:border-box;">
+        <button onclick="alert('Thank you! Volunteer coordinator will reach out for orientation.'); closeModal();" class="btn-emerald" style="width:100%; padding:12px;">Sign Up for Orientation ↗</button>
+      `);
+    }
+
+    function sponsorPatient(name) {
+      showModal(`
+        <h2 style="color:#059669; margin-top:0;">Sponsor Recovery for ${name}</h2>
+        <p style="color:#475569;">Your direct support provides antibiotics, specialized nutrition, and daily veterinary checkups.</p>
+        <button onclick="alert('Thank you for sponsoring ' + '${name}' + '! Regular progress photos will be sent to your email.'); closeModal();" class="btn-emerald" style="width:100%; padding:14px; font-size:16px;">Confirm $50 Recovery Sponsorship 💚</button>
+      `);
+    }
+
+    function applyFoster(name) {
+      showModal(`
+        <h2 style="color:#064e3b; margin-top:0;">Foster Application for ${name}</h2>
+        <p style="color:#475569; font-size:14px;">All potential foster homes undergo a gentle home check and questionnaire to ensure a peaceful environment.</p>
+        <input type="text" placeholder="Full Name" style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:8px; margin-bottom:10px; box-sizing:border-box;">
+        <input type="tel" placeholder="Phone Number" style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:8px; margin-bottom:12px; box-sizing:border-box;">
+        <button onclick="alert('Application submitted! Our adoption counselor will call you within 24 hours.'); closeModal();" class="btn-emerald" style="width:100%; padding:12px;">Submit Foster Application 🏡</button>
+      `);
+    }
+
+    function showModal(html) {
+      document.getElementById('modalBody').innerHTML = html;
+      document.getElementById('sanctuaryModal').style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('sanctuaryModal').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  </script>
+</body>
+</html>
